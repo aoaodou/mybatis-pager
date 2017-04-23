@@ -1,0 +1,11 @@
+/**
+ * 类的描述信息
+ *
+ * @author panzhuowen
+ * @version 1.0.1
+ */
+package cn.com.aoaodou.interceptor;
+
+class Constants {
+    static final String SIGNATURE_PREPARE = "prepare";
+}
