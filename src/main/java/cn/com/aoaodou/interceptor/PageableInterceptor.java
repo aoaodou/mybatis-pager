@@ -13,10 +13,11 @@ import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 /**
  * 类的描述信息
@@ -26,12 +27,11 @@ import java.util.logging.Logger;
  */
 @Intercepts({
         @Signature(type = StatementHandler.class, method = Constants.SIGNATURE_PREPARE, args = {Connection.class, Integer.class}),
-        @Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class})
+        @Signature(type = ResultSetHandler.class, method = Constants.HANDLE_RESULT_SETS, args = {Statement.class})
 })
 public class PageableInterceptor implements Interceptor {
 
-    private static Logger logger = Logger
-            .getLogger("cn.com.aoaodou.interceptor.PageableInterceptor");
+    private static Logger logger = LogManager.getLogger(PageableInterceptor.class);
 
 
     private static final ThreadLocal<Pageable> PAGE_THREAD_LOCAL = new ThreadLocal<>();

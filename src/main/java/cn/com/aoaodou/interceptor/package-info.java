@@ -8,4 +8,6 @@ package cn.com.aoaodou.interceptor;
 
 class Constants {
     static final String SIGNATURE_PREPARE = "prepare";
+
+    static final String HANDLE_RESULT_SETS = "handleResultSets";
 }

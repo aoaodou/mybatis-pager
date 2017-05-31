@@ -24,7 +24,7 @@ public abstract class AbstractSqlParser implements SqlParser {
         return pageable.getTotalResult() % pageable.getPageSize() == NO_RESULTS ? pageable.getTotalResult() / pageable.getPageSize() : pageable.getTotalResult() / pageable.getPageSize() + DEFAULT_PAGE_NO;
     }
 
-    int getReasonablePageNo(Pageable pageable) {
+    private int getReasonablePageNo(Pageable pageable) {
         if (pageable.getPageNo() <= NO_RESULTS) {
             pageable.setPageNo(DEFAULT_PAGE_NO);
         }
@@ -37,7 +37,7 @@ public abstract class AbstractSqlParser implements SqlParser {
         return pageable.getPageNo();
     }
 
-    public int getCurrentResult(Pageable pageable) {
+    int getCurrentResult(Pageable pageable) {
         int currentResult = (this.getReasonablePageNo(pageable) - 1) * pageable.getPageSize();
         return currentResult >= 0?currentResult:0;
     }
